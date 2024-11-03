@@ -41,7 +41,7 @@ export const Chat = () => {
       if (data.success) {
         // Actualiza el historial con el usuario ("Vos") y la IA ("Harry Wormwood")
         setChatHistory(oldChatHistory => [
-          ...oldChatHistory, 
+          ...oldChatHistory,
           {
             role: 'user', // Este es el rol del usuario
             content: value // Pregunta del usuario
@@ -71,30 +71,31 @@ export const Chat = () => {
   return (
     <>
       <div className='app'>
-        <section className='app search-section'>
-          <p>Bienvenido a Harry Wormwood Autos
-            {/* <button className='surprise' onClick={surprise}>
+        {/* <section className='app search-section'> */}
+        {/* <section className='app'> */}
+        <p>Bienvenido a Harry Wormwood Autos
+          {/* <button className='surprise' onClick={surprise}>
               Sorpréndeme
             </button> */}
-          </p>
-          <div className='input-container'>
-            <input
-              value={value}
-              placeholder='¿Qué autos tenés disponibles?'
-              onChange={(e) => setValue(e.target.value)}
-            />
-            {!error && <button onClick={getResponse}>Enviar</button>}
-            {error && <button onClick={clear}>Limpiar</button>}
-          </div>
-          {error && <p>{error}</p>}
-          <div className='search-result'>
-            {chatHistory.map((chatItem, _index) => (
-              <div key={_index}>
-                <p className='answer'><strong>{chatItem.role === 'user' ? 'Vos' : 'Harry Wormwood'}</strong>: {chatItem.content}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        </p>
+        <div className='input-container'>
+          <input
+            value={value}
+            placeholder='¿Qué autos tenés disponibles?'
+            onChange={(e) => setValue(e.target.value)}
+          />
+          {!error && <button onClick={getResponse}>Enviar</button>}
+          {error && <button onClick={clear}>Limpiar</button>}
+        </div>
+        {error && <p>{error}</p>}
+        <div className='search-result'>
+          {chatHistory.map((chatItem, _index) => (
+            <div key={_index}>
+              <p className='answer'><strong>{chatItem.role === 'user' ? 'Vos' : 'Harry Wormwood'}</strong>: {chatItem.content}</p>
+            </div>
+          ))}
+        </div>
+        {/* </section> */}
       </div>
     </>
   );
