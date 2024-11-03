@@ -1,3 +1,35 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { Verify } from "./pages/Verify";
+import { Chat } from "./pages/Chat";
+import { UserData } from "./context/UserContext";
+import { LoadingBig } from "./components/Loading";
+
+export const App = () => {
+  const { user, isAuth, loading } = UserData();
+  return (
+    <>
+      {loading ? (
+        <LoadingBig />
+      ) : (
+        <BrowserRouter>
+          <Routes>
+            {/* <Route path="/" element={isAuth ? <Home /> : <Login />} /> */}
+            <Route path="/" element={isAuth ? <Chat /> : <Login />} />
+            {/* <Route path="/login" element={isAuth ? <Home /> : <Login />} /> */}
+            <Route path="/login" element={isAuth ? <Chat /> : <Login />} />
+            {/* <Route path="/verify" element={isAuth ? <Home /> : <Verify />} /> */}
+            <Route path="/verify" element={isAuth ? <Chat /> : <Verify />} />
+          </Routes>
+        </BrowserRouter>
+      )}
+    </>
+  );
+};
+
+// export default App;
+/*
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,3 +55,4 @@ function App() {
 }
 
 export default App;
+*/
